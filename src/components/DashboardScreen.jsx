@@ -2,11 +2,7 @@ import React from "react";
 import { Container, Col, Row, Badge, Table } from "react-bootstrap";
 import NavbarComponent from "./NavbarComponent";
 
-const DashboardScreen = ({user}) => {
-  const HARDCODED_SESSIONS = [
-    { id: 1, duration: 70, height: 120, rating: 5, location: "Bogatell" },
-    { id: 2, duration: 90, height: 170, rating: 10, location: "Bogatell" },
-  ];
+const DashboardScreen = ({ user, sessions }) => {
   return (
     <>
       <NavbarComponent user={user} />
@@ -33,9 +29,9 @@ const DashboardScreen = ({user}) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {HARDCODED_SESSIONS.map((session) => (
-                    <tr key={session.id}>
-                      <td>{session.id}</td>
+                  {sessions.map((session, index) => (
+                    <tr key={session._id}>
+                      <td>{index + 1}</td>
                       <td>{session.duration}</td>
                       <td>{session.height}</td>
                       <td>{session.location}</td>
