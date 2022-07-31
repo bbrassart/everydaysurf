@@ -3,6 +3,7 @@ import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { DASHBOARD_PATH, LOGOUT_PATH, NEW_SESSION_PATH } from "../paths";
 
 const NavbarComponent = ({ user }) => {
+  const displayedName = user?.given_name || user?.nickname;
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -15,7 +16,7 @@ const NavbarComponent = ({ user }) => {
           </Nav>
           <Nav>
             <NavDropdown
-              title={`${user.given_name}'s settings`}
+              title={`${displayedName}'s settings`}
               id="collasible-nav-dropdown"
               className="float-end"
             >
