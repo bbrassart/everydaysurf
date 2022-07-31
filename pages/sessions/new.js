@@ -1,14 +1,13 @@
 import React from "react";
 import { withPageAuthRequired, useUser } from "@auth0/nextjs-auth0";
 import SpinnerScreen from "../../src/components/SpinnerScreen";
-import DashboardScreen from "../../src/components/DashboardScreen";
+import NewSessionScreen from "../../src/components/NewSessionScreen";
 
-const Dashboard = () => {
+const NewSession = () => {
   const { user, isLoading } = useUser();
-
-  return isLoading ? <SpinnerScreen /> : <DashboardScreen user={user} />;
+  return isLoading ? <SpinnerScreen /> : <NewSessionScreen user={user} />;
 };
 
-export default Dashboard;
+export default NewSession;
 
 export const getServerSideProps = withPageAuthRequired();
