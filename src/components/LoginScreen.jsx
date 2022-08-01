@@ -6,8 +6,12 @@ import { Container, Col, Row, Button } from "react-bootstrap";
 const LoginScreen = () => {
   return (
     <Container className="mt-5">
-      <Row className="justify-content-md-center">
-        <Col xs={3}>
+      <Row>
+        <Col md={8}>
+          <h1>Welcome to Everydaysurf</h1>
+          <h2>Log all of your surf sessions here to crunch some data</h2>
+        </Col>
+        <Col md={4}>
           <div className="d-flex justify-content-center">
             <Button variant="light">
               <Link href={LOGIN_PATH}>Log in or create an account</Link>
