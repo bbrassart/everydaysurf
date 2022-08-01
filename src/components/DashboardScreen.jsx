@@ -26,8 +26,7 @@ const columns = [
   },
 ];
 
-const DashboardScreen = ({ user, data = [] }) => {
-
+const DashboardScreen = ({ user, data }) => {
   const displayedName = user?.given_name || user?.nickname;
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =

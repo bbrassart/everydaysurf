@@ -6,6 +6,7 @@ import { SESSIONS_PATH } from "../../src/paths";
 
 const Dashboard = () => {
   const { user, isLoading } = useUser();
+  const [isSessionRequestRunning, setIsSessionRequestRunning] = useState(true);
   const [sessions, setSessions] = useState([]);
 
   useEffect(() => {
@@ -14,11 +15,14 @@ const Dashboard = () => {
         .then((response) => response.json())
         .then((response) => {
           setSessions(response.sessions);
+        })
+        .finally(() => {
+          setIsSessionRequestRunning(false);
         });
     }
   }, [user]);
 
-  return isLoading ? (
+  return isLoading || isSessionRequestRunning ? (
     <SpinnerScreen />
   ) : (
     <DashboardScreen data={sessions} user={user} />
