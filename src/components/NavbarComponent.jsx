@@ -1,8 +1,11 @@
 import React from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { DASHBOARD_PATH, LOGOUT_PATH, NEW_SESSION_PATH } from "../paths";
+import Image from "next/image";
 
 const NavbarComponent = ({ user }) => {
+  console.log(user);
+
   const displayedName = user?.given_name || user?.nickname;
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -16,9 +19,22 @@ const NavbarComponent = ({ user }) => {
           </Nav>
           <Nav>
             <NavDropdown
-              title={`${displayedName}'s settings`}
               id="collasible-nav-dropdown"
-              className="float-end"
+              title={
+                user?.picture &&
+                (user?.picture.includes("lh3.googleusercontent.com") ||
+                  user?.picture.includes("s.gravatar.com")) ? (
+                  <Image
+                    className="thumbnail-image"
+                    src={user?.picture}
+                    alt="user pic"
+                    width={50}
+                    height={50}
+                  />
+                ) : (
+                  <span>{displayedName}&apos;s settings</span>
+                )
+              }
             >
               <NavDropdown.Item href={LOGOUT_PATH}>Logout</NavDropdown.Item>
             </NavDropdown>
