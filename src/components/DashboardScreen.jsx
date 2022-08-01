@@ -44,11 +44,11 @@ const DashboardScreen = ({ user, data = [] }) => {
     <>
       <table {...getTableProps()}>
         <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
+          {headerGroups.map((headerGroup, index) => (
+            <tr key={index} {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column, index) => (
                 // Aplicamos las propiedades de ordenación a cada columna
-                <th
+                <th key={index}
                   {...column.getHeaderProps(column.getSortByToggleProps())}
                   className='column'
                 >
@@ -62,18 +62,18 @@ const DashboardScreen = ({ user, data = [] }) => {
         <tbody {...getTableBodyProps()}>
           {
             // Loop over the table rows
-            rows.map((row) => {
+            rows.map((row, index) => {
               // Prepare the row for display
               prepareRow(row);
               return (
                 // Apply the row props
-                <tr {...row.getRowProps()}>
+                <tr key={index} {...row.getRowProps()}>
                   {
                     // Loop over the rows cells
-                    row.cells.map((cell) => {
+                    row.cells.map((cell, index) => {
                       // Apply the cell props
                       return (
-                        <td {...cell.getCellProps()}>
+                        <td key={index} {...cell.getCellProps()}>
                           {
                             // Render the cell contents
                             cell.render("Cell")
