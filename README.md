@@ -1,6 +1,6 @@
-## Description of the EverydaySurf project
-
 ![EverydaySurf dashboard](https://i.imgur.com/HStWOoh.png)
+
+## Description of the EverydaySurf project
 
 I started this project in order to play around with NextJS and Auth0 authentication. This idea is to only allow
 logged in users to log their surf sessions. The idea is to make this product evolve as a personal project, if time allows. You can see it running live at [EverydaySurf](https://everydaysurf.vercel.app). It is still a work in progress. In this app, I play around with protected pages, protected API routes, resources, etc...
