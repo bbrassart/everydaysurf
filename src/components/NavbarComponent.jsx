@@ -4,8 +4,6 @@ import { DASHBOARD_PATH, LOGOUT_PATH, NEW_SESSION_PATH } from "../paths";
 import Image from "next/image";
 
 const NavbarComponent = ({ user }) => {
-  console.log(user);
-
   const displayedName = user?.given_name || user?.nickname;
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
