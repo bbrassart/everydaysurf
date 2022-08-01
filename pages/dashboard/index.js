@@ -21,7 +21,7 @@ const Dashboard = () => {
   return isLoading ? (
     <SpinnerScreen />
   ) : (
-    <DashboardScreen sessions={sessions} user={user} />
+    <DashboardScreen data={sessions} user={user} />
   );
 };
 

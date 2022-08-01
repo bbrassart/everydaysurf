@@ -1,0 +1,36 @@
+table {
+	border-collapse: collapse;
+  font-family: Tahoma, Geneva, sans-serif;
+}
+table td {
+	padding: 30px;
+  min-width: 200px;
+}
+table thead td {
+	background-color: #54585d;
+	color: #ffffff;
+	font-weight: bold;
+	font-size: 13px;
+	border: 1px solid #54585d;
+}
+
+table thead tr th {
+  padding: 0.5rem;
+	background-color: #198754;
+  border: 1px solid;
+  color: white;
+}
+table thead tr th:hover {
+	background-color: lightseagreen;
+}
+
+table tbody td {
+	color: #636363;
+	border: 1px solid #dddfe1;
+}
+table tbody tr {
+	background-color: #f9fafb;
+}
+table tbody tr:nth-child(odd) {
+	background-color: #ffffff;
+}

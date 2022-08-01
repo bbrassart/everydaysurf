@@ -1,37 +1,94 @@
 import React from "react";
-import { Container, Col, Row, Badge, Table } from "react-bootstrap";
+import { Container, Col, Row, Badge } from "react-bootstrap";
 import NavbarComponent from "./NavbarComponent";
+import { useTable, useSortBy } from "react-table";
 
-const DashboardScreen = ({ user, sessions }) => {
+const columns = [
+  {
+    Header: "Creation date",
+    accessor: "_id",
+  },
+  {
+    Header: "Duration",
+    accessor: "duration",
+  },
+  {
+    Header: "Waves's height",
+    accessor: "height",
+  },
+  {
+    Header: "Location",
+    accessor: "location",
+  },
+  {
+    Header: "Rating out of 10",
+    accessor: "rating",
+  },
+];
+
+const DashboardScreen = ({ user, data = [] }) => {
+
   const displayedName = user?.given_name || user?.nickname;
 
-  const renderNoSessions = (
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable({
+      columns,
+      data,
+    }, useSortBy);
+
+  const renderNoData = (
     <h3>Go ahead and add your first session to crunch some stats.</h3>
   );
 
   const renderTable = (
-    <Table striped bordered hover variant="dark">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Duration</th>
-          <th>Waves&apos; height</th>
-          <th>Location</th>
-          <th>Rating out of 10</th>
-        </tr>
-      </thead>
-      <tbody>
-        {sessions.map((session, index) => (
-          <tr key={session._id}>
-            <td>{index + 1}</td>
-            <td>{session.duration}</td>
-            <td>{session.height}</td>
-            <td>{session.location}</td>
-            <td>{session.rating}</td>
-          </tr>
-        ))}
-      </tbody>
-    </Table>
+    <>
+      <table {...getTableProps()}>
+        <thead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                // Aplicamos las propiedades de ordenación a cada columna
+                <th
+                  {...column.getHeaderProps(column.getSortByToggleProps())}
+                  className='column'
+                >
+                  {`Sort by ${column.render("Header")}`}
+                </th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+        {/* Apply the table body props */}
+        <tbody {...getTableBodyProps()}>
+          {
+            // Loop over the table rows
+            rows.map((row) => {
+              // Prepare the row for display
+              prepareRow(row);
+              return (
+                // Apply the row props
+                <tr {...row.getRowProps()}>
+                  {
+                    // Loop over the rows cells
+                    row.cells.map((cell) => {
+                      // Apply the cell props
+                      return (
+                        <td {...cell.getCellProps()}>
+                          {
+                            // Render the cell contents
+                            cell.render("Cell")
+                          }
+                        </td>
+                      );
+                    })
+                  }
+                </tr>
+              );
+            })
+          }
+        </tbody>
+      </table>
+    </>
   );
 
   return (
@@ -49,7 +106,7 @@ const DashboardScreen = ({ user, sessions }) => {
         <Row className="mt-4">
           <Col xs={12}>
             <div className="mt-2">
-              {sessions.length ? renderTable : renderNoSessions}
+              {data.length ? renderTable : renderNoData}
             </div>
           </Col>
         </Row>
