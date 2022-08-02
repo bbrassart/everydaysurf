@@ -31,20 +31,8 @@ const columns = [
   },
 ];
 
-const DashboardScreen = ({ user, data }) => {
+const DashboardScreen = ({ user, data, setIdToDelete }) => {
   const displayedName = user?.given_name || user?.nickname;
-
-  const handleCellClick = (cell) => {
-    const { column } = cell;
-    const { id } = column;
-    if (id !== "delete") return null;
-
-    const requestOptions = {
-      method: "DELETE",
-    };
-
-    console.log("WILL DELETE IN THE FUTURE");
-  };
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable(
@@ -109,7 +97,7 @@ const DashboardScreen = ({ user, data }) => {
                       className={id}
                       key={index}
                       {...cell.getCellProps()}
-                      onClick={() => handleCellClick(cell)}
+                      onClick={() => setIdToDelete(cell.row.original._id)}
                     >
                       {cell.render("Cell")}
                     </td>
