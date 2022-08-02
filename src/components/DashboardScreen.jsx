@@ -34,6 +34,12 @@ const columns = [
 const DashboardScreen = ({ user, data, setIdToDelete }) => {
   const displayedName = user?.given_name || user?.nickname;
 
+  const onDeleteClick = (id) => {
+    const confirmation = confirm("Are you sure you want to delete this session?");
+    if (!confirmation) return null;
+    setIdToDelete(id);
+  };
+
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable(
       {
@@ -97,7 +103,7 @@ const DashboardScreen = ({ user, data, setIdToDelete }) => {
                       className={id}
                       key={index}
                       {...cell.getCellProps()}
-                      onClick={() => setIdToDelete(cell.row.original._id)}
+                      onClick={() => onDeleteClick(cell.row.original._id)}
                     >
                       {cell.render("Cell")}
                     </td>
