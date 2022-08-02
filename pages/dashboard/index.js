@@ -14,7 +14,10 @@ const Dashboard = () => {
       fetch(SESSIONS_PATH)
         .then((response) => response.json())
         .then((response) => {
-          setSessions(response.sessions);
+          setSessions(response.sessions.map((session, index) => ({
+            ...session,
+            _index: index + 1,
+          })));
         })
         .finally(() => {
           setIsSessionRequestRunning(false);

@@ -6,7 +6,7 @@ import { useTable, useSortBy } from "react-table";
 const columns = [
   {
     Header: "Creation date",
-    accessor: "_id",
+    accessor: "_index",
   },
   {
     Header: "Duration",
@@ -106,7 +106,7 @@ const DashboardScreen = ({ user, data }) => {
                   const { id } = column;
                   return (
                     <td
-                      className={id === "delete" ? "delete-cell" : ""}
+                      className={id}
                       key={index}
                       {...cell.getCellProps()}
                       onClick={() => handleCellClick(cell)}
