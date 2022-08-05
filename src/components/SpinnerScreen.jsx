@@ -7,7 +7,7 @@ const SpinnerScreen = () => {
       <Row className="justify-content-md-center">
         <Col xs={6}>
           <div className="d-flex justify-content-center">
-            <Spinner animation="grow" variant="success" />
+            <Spinner animation="grow" variant="primary" />
           </div>
         </Col>
       </Row>

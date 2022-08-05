@@ -16,7 +16,7 @@ const LoginScreen = () => {
         </Col>
         <Col md={4}>
           <div className="d-flex justify-content-center">
-            <Button variant="success" onClick={goToLogin}>
+            <Button variant="primary" onClick={goToLogin}>
               Log in or create an account
             </Button>
           </div>

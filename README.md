@@ -1,4 +1,4 @@
-![EverydaySurf dashboard](https://i.imgur.com/UaWIcfQ.png)
+![EverydaySurf dashboard](https://i.imgur.com/WuGJEuN.png)
 
 ## Description of the EverydaySurf project
 

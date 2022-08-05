@@ -125,7 +125,7 @@ const DashboardScreen = ({ user, data, setIdToDelete }) => {
         <Row>
           <Col>
             <h2 className="mt-2">
-              <Badge bg="success">{displayedName}&apos;s dashboard</Badge>
+              <Badge bg="primary">{displayedName}&apos;s dashboard</Badge>
             </h2>
           </Col>
         </Row>
