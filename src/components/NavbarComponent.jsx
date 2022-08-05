@@ -6,7 +6,7 @@ import Image from "next/image";
 const NavbarComponent = ({ user }) => {
   const displayedName = user?.given_name || user?.nickname;
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className='everydaysurf-navbar'>
       <Container>
         <Navbar.Brand>EverydaySurf</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -22,13 +22,13 @@ const NavbarComponent = ({ user }) => {
                 user?.picture &&
                 (user?.picture.includes("lh3.googleusercontent.com") ||
                   user?.picture.includes("s.gravatar.com")) ? (
-                  <Image
-                    className="thumbnail-image"
-                    src={user?.picture}
-                    alt="user pic"
-                    width={50}
-                    height={50}
-                  />
+                    <Image
+                      className="thumbnail-image"
+                      src={user?.picture}
+                      alt="user pic"
+                      width={50}
+                      height={50}
+                    />
                 ) : (
                   <span>{displayedName}&apos;s settings</span>
                 )

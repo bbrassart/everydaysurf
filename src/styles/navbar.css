@@ -1,0 +1,9 @@
+.everydaysurf-navbar .navbar-nav .nav-item .thumbnail-image {
+  border-radius: 3rem;
+  overflow: 'hidden';
+}
+
+.everydaysurf-navbar .navbar-nav .nav-item a.dropdown-toggle::after {
+  margin-left: 0.5rem;
+  vertical-align: 1.375rem;
+}

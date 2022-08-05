@@ -1,9 +1,12 @@
 import React from "react";
 import { LOGIN_PATH } from "../../src/paths";
-import Link from "next/link";
 import { Container, Col, Row, Button } from "react-bootstrap";
+import { useRouter } from "next/router";
 
 const LoginScreen = () => {
+  const router = useRouter();
+  const goToLogin = () => router.push(LOGIN_PATH);
+
   return (
     <Container className="mt-5">
       <Row>
@@ -13,8 +16,8 @@ const LoginScreen = () => {
         </Col>
         <Col md={4}>
           <div className="d-flex justify-content-center">
-            <Button variant="light">
-              <Link href={LOGIN_PATH}>Log in or create an account</Link>
+            <Button variant="success" onClick={goToLogin}>
+              Log in or create an account
             </Button>
           </div>
         </Col>

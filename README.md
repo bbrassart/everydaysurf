@@ -4,7 +4,7 @@
 
 I started this project in order to play around with NextJS and Auth0 authentication. This idea is to only allow
 logged in users to log their surf sessions. The idea is to make this product evolve as a personal project, if time allows. You can see it running live at [EverydaySurf](https://everydaysurf.vercel.app). It is still a work in progress. In this app, I play around with protected pages, protected API routes, resources, etc...
-I still need to implement resource DELETE, make the UI fancy and verify emails on subscription. Hopefuly, I will find the time to do that soon.
+I still need to implement some tests, TailWindCSS or similar, make the UI fancy, verify emails on subscription, add new screens, etc... Hopefuly, I will find the time to do that soon.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

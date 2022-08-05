@@ -35,7 +35,9 @@ const DashboardScreen = ({ user, data, setIdToDelete }) => {
   const displayedName = user?.given_name || user?.nickname;
 
   const onDeleteClick = (id) => {
-    const confirmation = confirm("Are you sure you want to delete this session?");
+    const confirmation = confirm(
+      "Are you sure you want to delete this session?"
+    );
     if (!confirmation) return null;
     setIdToDelete(id);
   };
@@ -54,67 +56,65 @@ const DashboardScreen = ({ user, data, setIdToDelete }) => {
   );
 
   const renderTable = (
-    <>
-      <table {...getTableProps()}>
-        <thead>
-          {headerGroups.map((headerGroup, index) => (
-            <tr key={index} {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column, index) => {
-                if (column.id !== "delete") {
-                  return (
-                    <th
-                      key={index}
-                      {...column.getHeaderProps(column.getSortByToggleProps())}
-                      className="column"
-                    >
-                      {
-                        <div className="justify-content-start d-inline">
-                          <span>{column.render("Header")}</span>
-                          <i className="float-end mt-2 gg-sort-az" />
-                        </div>
-                      }
-                    </th>
-                  );
-                }
-
+    <table {...getTableProps()}>
+      <thead>
+        {headerGroups.map((headerGroup, index) => (
+          <tr key={index} {...headerGroup.getHeaderGroupProps()}>
+            {headerGroup.headers.map((column, index) => {
+              if (column.id !== "delete") {
                 return (
-                  <th key={index}>
+                  <th
+                    key={index}
+                    {...column.getHeaderProps(column.getSortByToggleProps())}
+                    className="column"
+                  >
                     {
                       <div className="justify-content-start d-inline">
                         <span>{column.render("Header")}</span>
+                        <i className="float-end mt-2 gg-sort-az" />
                       </div>
                     }
                   </th>
                 );
+              }
+
+              return (
+                <th key={index}>
+                  {
+                    <div className="justify-content-start d-inline">
+                      <span>{column.render("Header")}</span>
+                    </div>
+                  }
+                </th>
+              );
+            })}
+          </tr>
+        ))}
+      </thead>
+      <tbody {...getTableBodyProps()}>
+        {rows.map((row, index) => {
+          prepareRow(row);
+          return (
+            <tr key={index} {...row.getRowProps()}>
+              {row.cells.map((cell, index) => {
+                const { column } = cell;
+                const { id } = column;
+                return (
+                  <td
+                    className={id}
+                    key={index}
+                    {...cell.getCellProps()}
+                    onClick={() => onDeleteClick(cell.row.original._id)}
+                  >
+                    {cell.render("Cell")}
+                  </td>
+                );
               })}
             </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row, index) => {
-            prepareRow(row);
-            return (
-              <tr key={index} {...row.getRowProps()}>
-                {row.cells.map((cell, index) => {
-                  const { column } = cell;
-                  const { id } = column;
-                  return (
-                    <td
-                      className={id}
-                      key={index}
-                      {...cell.getCellProps()}
-                      onClick={() => onDeleteClick(cell.row.original._id)}
-                    >
-                      {cell.render("Cell")}
-                    </td>
-                  );
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </>
+          );
+        })}
+      </tbody>
+    </table>
   );
 
   return (
